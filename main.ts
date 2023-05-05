@@ -33,6 +33,7 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sp
     No_animations = 0
     animation.stopAnimation(animation.AnimationTypes.All, player2)
     player2.setImage(assets.image`billy the guy`)
+    player2.startEffect(effects.smiles, 1000)
     tiles.setTileAt(tiles.getTileLocation(10, 12), sprites.dungeon.chestOpen)
     sword = sprites.create(assets.image`sword`, SpriteKind.weapons)
     music.play(music.melodyPlayable(music.powerUp), music.PlaybackMode.InBackground)
