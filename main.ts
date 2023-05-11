@@ -6,6 +6,7 @@ enum ActionKind {
 namespace SpriteKind {
     export const weapons = SpriteKind.create()
     export const npc = SpriteKind.create()
+    export const background = SpriteKind.create()
 }
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.weapons, function (sprite, otherSprite) {
     if (attacking) {
@@ -93,6 +94,68 @@ let No_animations = 0
 let have_sword = 0
 let player2: Sprite = null
 let sword: Sprite = null
+let billy_animation = sprites.create(assets.image`myImage`, SpriteKind.background)
+scaling.scaleToPercent(billy_animation, 150, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+billy_animation.setPosition(123, 80)
+let begingin_anim = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.background)
+billy_animation.z = 20
+begingin_anim.setPosition(0, 30)
+animation.runImageAnimation(
+begingin_anim,
+assets.animation`myAnim1`,
+700,
+false
+)
+pause(3000)
+sprites.destroy(begingin_anim)
+scene.setBackgroundImage(assets.image`montainne`)
+let princess_house = sprites.create(assets.image`myImage0`, SpriteKind.background)
+princess_house.setPosition(35, 96)
+scaling.scaleToPercent(princess_house, 80, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+let dark_chateau = sprites.create(assets.image`myImage2`, SpriteKind.background)
+scaling.scaleToPercent(dark_chateau, 130, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+dark_chateau.setPosition(126, 47)
+pause(2000)
+let princess = sprites.create(assets.image`princess`, SpriteKind.background)
+princess.setPosition(35, 110)
+pause(500)
+let dark_lord = sprites.create(assets.image`dark lord`, SpriteKind.background)
+dark_lord.setPosition(126, 60)
+scaling.scaleToPercent(dark_lord, 60, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+pause(1000)
+scaling.scaleToPercent(dark_lord, 80, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+dark_lord.setPosition(102, 80)
+let textSprite = textsprite.create("!!!", 0, 15)
+textSprite.setPosition(80, 100)
+pause(2000)
+scaling.scaleToPercent(dark_lord, 100, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+dark_lord.setPosition(58, 100)
+pause(1000)
+animation.runImageAnimation(
+princess,
+assets.animation`myAnim2`,
+200,
+false
+)
+pause(1000)
+sprites.destroyAllSpritesOfKind(SpriteKind.background)
 sword = sprites.create(assets.image`sword`, SpriteKind.weapons)
 sprites.destroy(sword)
 player2 = sprites.create(assets.image`billy the guy`, SpriteKind.Player)
@@ -134,7 +197,7 @@ forever(function () {
             if (controller.A.isPressed()) {
                 if (1 == weapon_direction) {
                     scaling.scaleToPercent(sword, 200, ScaleDirection.Uniformly, ScaleAnchor.Middle)
-                    sword.y = sword.y + randint(20, 30)
+                    sword.y = player2.y + randint(20, 30)
                     attacking = 1
                     sword.startEffect(effects.fire, 500)
                     animation.runImageAnimation(
@@ -151,7 +214,7 @@ forever(function () {
                     attacking = 0
                 } else if (2 == weapon_direction) {
                     scaling.scaleToPercent(sword, 200, ScaleDirection.Uniformly, ScaleAnchor.Middle)
-                    sword.x = sword.x - randint(30, 40)
+                    sword.x = player2.x - randint(30, 40)
                     attacking = 1
                     sword.startEffect(effects.fire, 500)
                     animation.runImageAnimation(
@@ -168,7 +231,7 @@ forever(function () {
                     attacking = 0
                 } else if (3 == weapon_direction) {
                     scaling.scaleToPercent(sword, 200, ScaleDirection.Uniformly, ScaleAnchor.Middle)
-                    sword.y = sword.y - randint(20, 30)
+                    sword.y = player2.y - randint(20, 30)
                     attacking = 1
                     sword.startEffect(effects.fire, 500)
                     animation.runImageAnimation(
@@ -185,7 +248,7 @@ forever(function () {
                     attacking = 0
                 } else if (4 == weapon_direction) {
                     scaling.scaleToPercent(sword, 200, ScaleDirection.Uniformly, ScaleAnchor.Middle)
-                    sword.x = sword.x + randint(20, 30)
+                    sword.x = player2.x + randint(20, 30)
                     attacking = 1
                     sword.startEffect(effects.fire, 500)
                     animation.runImageAnimation(

@@ -1,5 +1,5 @@
 {
-    "name": "The adventure of (insert name here)",
+    "name": "The adventure of billyy",
     "version": "1.0.0",
     "description": "",
     "dependencies": {
@@ -10,7 +10,8 @@
         "arcade-text": "github:microsoft/arcade-text#v1.3.0",
         "pxt-status-bar": "github:jwunderl/pxt-status-bar#v0.4.2",
         "controller": "*",
-        "multiplayer": "*"
+        "multiplayer": "*",
+        "darts": "*"
     },
     "files": [
         "main.blocks",
@@ -40,7 +41,7 @@
         "#FF93C4",
         "#FF8135",
         "#FFF609",
-        "#249CA3",
+        "#6699FF",
         "#78DC52",
         "#003FAD",
         "#87F2FF",
